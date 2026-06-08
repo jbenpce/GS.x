@@ -248,6 +248,7 @@ p { margin: 0 0 1.1rem; color: var(--soft); }
 .member h3 { font-family: var(--serif); font-size: 1.45rem; color: var(--paper); margin-bottom: .35rem; }
 .member .role { font-family: var(--sans); font-size: .82rem; letter-spacing: .06em; color: var(--sage); margin-bottom: .15rem; }
 .member .cred { font-family: var(--sans); font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.member h3 .cred-inline { font-family: var(--sans); font-size: .56rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--sage); vertical-align: middle; margin-left: .5rem; white-space: nowrap; }
 .member .sep { height: 1px; background: var(--line-soft); margin: 1.3rem 0; }
 .member p { color: var(--muted); font-size: .92rem; margin-bottom: 1.5rem; }
 
