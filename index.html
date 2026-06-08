@@ -26,7 +26,7 @@
           <li><a href="#team">Team</a></li>
           <li><a href="#partners">Partners</a></li>
           <li><a href="#news">News</a></li>
-          <li><a href="mailto:info@greensparx.io" class="btn btn--outline" style="padding:.7rem 1.3rem">Get in touch</a></li>
+          <li><a href="#contact" class="btn btn--outline" style="padding:.7rem 1.3rem">Get in touch</a></li>
         </ul>
         <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
           <span></span><span></span><span></span>
@@ -45,7 +45,7 @@
           <p class="lede reveal in">Greenspar.x is a European development platform focused on battery energy storage and the infrastructure that enables the clean energy transition.</p>
           <div class="hero-actions reveal in">
             <a href="#portfolio" class="btn btn--solid">Our portfolio</a>
-            <a href="mailto:info@greensparx.io" class="btn btn--text">Talk to us <span class="arrow">&rarr;</span></a>
+            <a href="#contact" class="btn btn--text">Talk to us <span class="arrow">&rarr;</span></a>
           </div>
         </div>
 
@@ -229,6 +229,64 @@
             </div>
             <span class="news-read">Read <span class="arrow">&rarr;</span></span>
           </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact / Get in touch -->
+    <section class="section section--alt" id="contact">
+      <div class="container split split--top">
+        <div class="reveal">
+          <p class="eyebrow">Contact</p>
+          <h2 class="h-section">Let's build the<br><em>grid</em> Europe needs.</h2>
+          <p class="lede" style="margin-top:2rem">Investors, advisers and prospective partners — we'd be glad to connect.</p>
+          <div style="margin-top:1.6rem">
+            <a class="link-arrow" href="mailto:info@greensparx.io">info@greensparx.io <span class="arrow">&rarr;</span></a>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="form-panel">
+            <h3>Get in Touch</h3>
+            <p class="intro">Tell us a little about you and we'll be in touch.</p>
+            <form data-contact-form novalidate>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="fname">First name</label>
+                  <input id="fname" name="fname" type="text" placeholder="Alessandro" />
+                </div>
+                <div class="field">
+                  <label for="lname">Last name</label>
+                  <input id="lname" name="lname" type="text" placeholder="Rossi" />
+                </div>
+                <div class="field">
+                  <label for="org">Organisation</label>
+                  <input id="org" name="org" type="text" placeholder="Company" />
+                </div>
+                <div class="field">
+                  <label for="role">I am a&hellip;</label>
+                  <select id="role" name="role">
+                    <option value="" selected disabled>Select</option>
+                    <option>Investor</option>
+                    <option>Adviser</option>
+                    <option>Prospective partner</option>
+                    <option>Landowner / developer</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="field full">
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" placeholder="a.rossi@company.com" />
+                </div>
+                <div class="field full">
+                  <label for="message">Message</label>
+                  <textarea id="message" name="message" placeholder="Tell us briefly what you'd like to discuss&hellip;"></textarea>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-send">Send message</button>
+              <p class="form-note" data-form-note hidden></p>
+            </form>
+          </div>
         </div>
       </div>
     </section>
