@@ -40,7 +40,6 @@ to the deploy branch auto-publishes to:
 Stats, team and copy are sourced from the GS.x prototype:
 
 - **960 MW** proprietary Italian BESS portfolio (9 projects, STMG secured)
-- **154 MW** wind pipeline — Nardò/Leverano (55 MW) + Torremaggiore (99 MW)
 - Team: John Bottomley (CFA), Ewan Gibb, Carlos Martínez
 
 ## Customising
