@@ -45,17 +45,31 @@
     reveals.forEach(function (el) { el.classList.add("in"); });
   }
 
-  // Contact form — front-end stub (static site has no backend)
+  // Contact form — forwards to info@greensparx.io via the visitor's email client
+  // (static site, no backend). Swap for Formspree/Netlify Forms for inbox delivery.
   var form = document.querySelector("[data-contact-form]");
   if (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+      var val = function (id) { var el = form.querySelector("#" + id); return el ? el.value.trim() : ""; };
+      var fname = val("fname"), lname = val("lname"), org = val("org"),
+          role = val("role"), email = val("email"), message = val("message");
+      var name = (fname + " " + lname).trim();
+      var subject = "Website enquiry" + (name ? " — " + name : "");
+      var body =
+        "Name: " + name + "\n" +
+        "Organisation: " + org + "\n" +
+        "I am a: " + role + "\n" +
+        "Email: " + email + "\n\n" +
+        "Message:\n" + message + "\n";
+      window.location.href =
+        "mailto:info@greensparx.io?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(body);
       var note = form.querySelector("[data-form-note]");
       if (note) {
         note.hidden = false;
-        note.textContent = "Thank you — your message has been noted. We'll be in touch shortly.";
+        note.textContent = "Opening your email app to send to info@greensparx.io…";
       }
-      form.reset();
     });
   }
 
