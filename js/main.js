@@ -67,8 +67,11 @@
         "&body=" + encodeURIComponent(body);
       var note = form.querySelector("[data-form-note]");
       if (note) {
+        var isIt = (document.documentElement.lang || "").toLowerCase().indexOf("it") === 0;
         note.hidden = false;
-        note.textContent = "Opening your email app to send to info@greensparx.io…";
+        note.textContent = isIt
+          ? "Apertura dell'app email per scrivere a info@greensparx.io…"
+          : "Opening your email app to send to info@greensparx.io…";
       }
     });
   }

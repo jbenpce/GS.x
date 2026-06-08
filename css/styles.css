@@ -143,6 +143,13 @@ p { margin: 0 0 1.1rem; color: var(--soft); }
 .nav.open .nav-toggle span:nth-child(2) { opacity: 0; }
 .nav.open .nav-toggle span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
 
+/* Language switch (EN / IT flags) */
+.lang-switch { display: flex; align-items: center; gap: .5rem; }
+.lang { display: block; width: 26px; height: 17px; border-radius: 3px; overflow: hidden; opacity: .45; transition: opacity var(--transition), box-shadow var(--transition); box-shadow: 0 0 0 1px rgba(236, 232, 223, .18); }
+.lang:hover { opacity: .85; }
+.lang.active { opacity: 1; box-shadow: 0 0 0 1px var(--sage); cursor: default; }
+.lang .flag { width: 100%; height: 100%; display: block; }
+
 /* ------------------------------ Hero ------------------------------------ */
 .hero { padding-top: 84px; min-height: 100vh; display: flex; align-items: stretch; }
 .hero-grid { display: grid; grid-template-columns: 1fr 1fr; flex: 1; align-items: stretch; }
