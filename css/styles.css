@@ -179,11 +179,11 @@ p { margin: 0 0 1.1rem; color: var(--soft); }
 @keyframes drift { from { transform: translateY(0); } to { transform: translateY(-14px); } }
 
 /* Hero photo — large-scale BESS image behind the metrics.
-   Drop the file at assets/hero-bess.jpg (or change the url below to a direct
+   Drop the file at assets/hero-bess.png (or change the url below to a direct
    image URL). If absent, it's transparent and the energy-field shows through. */
 .hero-photo {
   position: absolute; inset: 0; z-index: 1;
-  background-image: url("../assets/hero-bess.jpg");
+  background-image: url("../assets/hero-bess.png");
   background-size: cover; background-position: center; background-repeat: no-repeat;
 }
 .hero-photo::after {
