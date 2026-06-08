@@ -178,15 +178,30 @@ p { margin: 0 0 1.1rem; color: var(--soft); }
 }
 @keyframes drift { from { transform: translateY(0); } to { transform: translateY(-14px); } }
 
+/* Hero photo — large-scale BESS image behind the metrics.
+   Drop the file at assets/hero-bess.jpg (or change the url below to a direct
+   image URL). If absent, it's transparent and the energy-field shows through. */
+.hero-photo {
+  position: absolute; inset: 0; z-index: 1;
+  background-image: url("../assets/hero-bess.jpg");
+  background-size: cover; background-position: center; background-repeat: no-repeat;
+}
+.hero-photo::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    linear-gradient(105deg, var(--ink) 0%, rgba(10, 11, 9, .35) 30%, transparent 62%),
+    linear-gradient(180deg, rgba(4, 12, 8, .12), rgba(4, 12, 8, .5));
+}
+
 .hero-stats {
   position: absolute; inset: 0; z-index: 2;
   display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
   gap: 1rem; padding: clamp(2.5rem, 6vw, 5rem) clamp(2rem, 5vw, 4rem);
   align-content: center;
 }
-.hstat .num { font-size: clamp(2.4rem, 4.5vw, 3.6rem); color: var(--paper); line-height: 1; }
+.hstat .num { font-size: clamp(2.4rem, 4.5vw, 3.6rem); color: var(--paper); line-height: 1; text-shadow: 0 2px 18px rgba(0, 0, 0, .55); }
 .hstat .num .u { font-size: .42em; letter-spacing: .02em; margin-left: .15em; color: var(--paper); }
-.hstat .cap { font-family: var(--sans); font-size: .68rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-top: .7rem; }
+.hstat .cap { font-family: var(--sans); font-size: .68rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--soft); margin-top: .7rem; text-shadow: 0 1px 10px rgba(0, 0, 0, .6); }
 
 /* ------------------------------ Section head ---------------------------- */
 .section-head { max-width: 620px; }
