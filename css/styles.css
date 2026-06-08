@@ -117,10 +117,12 @@ p { margin: 0 0 1.1rem; color: var(--soft); }
   border-bottom-color: var(--line-soft);
 }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 84px; }
-.brand { font-family: var(--serif); font-size: 1.6rem; letter-spacing: .01em; color: var(--paper); position: relative; display: inline-block; }
+.brand { font-family: var(--serif); font-size: 1.6rem; letter-spacing: .01em; color: var(--paper); display: inline-flex; align-items: center; gap: .55rem; }
+.brand-icon { width: 1.45em; height: 1.45em; display: block; flex: 0 0 auto; }
+.brand-wm { position: relative; display: inline-block; }
 .brand .x { font-size: .68em; color: var(--sage); }
-/* Logo charge-bar underline (concept 10) — header only */
-.site-header .brand::after {
+/* Logo charge-bar underline (concept 10) — header wordmark only */
+.site-header .brand-wm::after {
   content: ""; position: absolute; left: 2px; right: 2px; bottom: -7px; height: 3px; border-radius: 2px;
   background: linear-gradient(90deg, #6ee79a 0%, #2bb673 66%, transparent 66%, transparent 76%, var(--forest) 76%, var(--forest) 100%);
 }
