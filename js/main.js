@@ -45,7 +45,21 @@
     reveals.forEach(function (el) { el.classList.add("in"); });
   }
 
+  // Contact form — front-end stub (static site has no backend)
+  var form = document.querySelector("[data-contact-form]");
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var note = form.querySelector("[data-form-note]");
+      if (note) {
+        note.hidden = false;
+        note.textContent = "Thank you — your message has been noted. We'll be in touch shortly.";
+      }
+      form.reset();
+    });
+  }
+
   // Footer year
-  var yr = document.querySelector("[data-year]");
-  if (yr) { yr.textContent = new Date().getFullYear(); }
+  var yr = document.querySelectorAll("[data-year]");
+  yr.forEach(function (el) { el.textContent = new Date().getFullYear(); });
 })();

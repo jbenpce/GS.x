@@ -54,5 +54,8 @@ Theme is driven by CSS custom properties at the top of `css/styles.css`
 - **Hero visual** — currently a CSS-generated green "energy field." Drop in the
   real hero image/video by replacing `.energy-field` background in the CSS.
 - **LinkedIn URLs** — team and contact LinkedIn links point to `#`.
-- **Contact email** — `info@greenspar.x` (update to the real address).
 - **Team photos** — circular initial avatars; swap for real headshots if desired.
+- **Contact form** — the Investor Relations "Get in Touch" form is a front-end
+  stub. Wire it to a service (Formspree, Netlify Forms, etc.) to receive
+  submissions. Contact: Greenspar.x S.r.l., Via Eleonora Duse 53, 00197 Roma —
+  info@greensparx.io.
