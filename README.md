@@ -1,64 +1,58 @@
-# GreenSparx — greensparx.io
+# GS.x — Greenspar.x
 
-A plain static **HTML/CSS** website for **GreenSparx**, a Rome-based European
-developer of battery energy storage (BESS) and solar PV. No build step, no
-frameworks — just open the files or serve the folder.
+A plain static **single-page** website (HTML/CSS/vanilla JS, no build step) for
+**Greenspar.x (GS.x)**, a European development platform focused on battery
+energy storage and the infrastructure enabling the clean energy transition.
 
-## Pages
-
-| File | Page |
-|------|------|
-| `index.html` | Home |
-| `portfolio.html` | Portfolio / Pipeline |
-| `team.html` | Team |
-| `news.html` | News |
-| `contact.html` | Contact |
+Dark editorial aesthetic: near-black canvas, high-end serif display
+(Fraunces) with sage-green italics, uppercase letterspaced sans labels
+(Inter), and generous negative space.
 
 ## Structure
 
 ```
 .
-├── index.html, portfolio.html, team.html, news.html, contact.html
-├── css/styles.css     # full design system (CSS custom properties)
-├── js/main.js         # mobile nav, scroll reveal, form stubs, footer year
+├── index.html        # single-page site (anchor-nav sections)
+├── css/styles.css    # design system (CSS custom properties)
+├── js/main.js        # header scroll state, mobile nav, scroll reveal, year
 └── assets/favicon.svg
 ```
 
+Sections (anchor-linked from the nav): Hero · What we do (Our Approach) ·
+Portfolio · Team · Partners · Investors · Get in touch.
+
 ## Running locally
 
-It's static, so just open `index.html` in a browser. For clean relative paths,
-serve the folder:
+It's static — open `index.html`, or serve the folder for clean paths:
 
 ```bash
-python3 -m http.server 8000
-# then visit http://localhost:8000
+python3 -m http.server 8000   # then visit http://localhost:8000
 ```
 
-## Key facts featured
+## Deployment
 
-- ~960 MW wholly-owned BESS pipeline + 400 MW BESS in joint venture (~1.4 GW total)
-- Proprietary solar PV pipeline
-- First two BESS (130 MW) in southern Italy with land + grid secured
-- 50–99 MW project strategy on 36 kV / 150 kV connections
-- 15 live grid connection applications
-- Ready-to-build (RTB) target Q3 2027
+GitHub Pages via Actions (`.github/workflows/deploy-pages.yml`) — every push
+to the deploy branch auto-publishes to:
+**https://jbenpce.github.io/GS.x/**
 
-## Customising the brand
+## Content
 
-Everything is driven from CSS custom properties at the top of
-`css/styles.css` (`:root`). Update these to match the real brand:
+Stats, team and copy are sourced from the GS.x prototype:
 
-- **Colors** — `--green-*`, `--accent`, neutrals
-- **Fonts** — `--font-sans` / `--font-display` (currently Inter via Google Fonts)
-- **Logo** — replace the `.brand-mark` lettermark and `assets/favicon.svg`
+- **960 MW** proprietary Italian BESS portfolio (9 projects, STMG secured)
+- **400 MW** JV BESS co-development pipeline
+- **154 MW** wind pipeline — Nardò/Leverano (55 MW) + Torremaggiore (99 MW)
+- Team: John Bottomley (CFA), Ewan Gibb, Luigi Fattore, Carlos Martínez
 
-## Placeholders to confirm
+## Customising
 
-These were stubbed pending real assets — search and replace as needed:
+Theme is driven by CSS custom properties at the top of `css/styles.css`
+(`:root`): colors (`--ink`, `--sage`, `--forest`…), fonts (`--serif`,
+`--sans`), and rhythm.
 
-- **Team** (`team.html`): names, roles, bios and photos are placeholders
-- **News** (`news.html`): articles are illustrative placeholders
-- **Portfolio** (`portfolio.html`): individual project names/capacities are indicative
-- **Contact** (`contact.html`): email, LinkedIn, address, map — and wire the form
-  to a service (Formspree, Netlify Forms, etc.) to receive submissions
-- **Logo & brand colors**: confirm and swap into `:root` and `.brand-mark`
+### Placeholders to confirm
+- **Hero visual** — currently a CSS-generated green "energy field." Drop in the
+  real hero image/video by replacing `.energy-field` background in the CSS.
+- **LinkedIn URLs** — team and contact LinkedIn links point to `#`.
+- **Contact email** — `info@greenspar.x` (update to the real address).
+- **Team photos** — circular initial avatars; swap for real headshots if desired.

@@ -1,18 +1,35 @@
-/* GreenSparx — light progressive enhancement (no dependencies) */
+/* GS.x — Greenspar.x · progressive enhancement (no dependencies) */
 (function () {
   "use strict";
 
-  // Mobile nav toggle
-  var toggle = document.querySelector(".nav-toggle");
+  var header = document.querySelector(".site-header");
   var nav = document.querySelector(".nav");
+  var toggle = document.querySelector(".nav-toggle");
+
+  // Header background on scroll
+  function onScroll() {
+    if (!header) return;
+    header.classList.toggle("scrolled", window.scrollY > 24);
+  }
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  // Mobile nav
   if (toggle && nav) {
     toggle.addEventListener("click", function () {
       var open = nav.classList.toggle("open");
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
     });
+    // Close menu after tapping a link
+    nav.querySelectorAll(".nav-links a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        nav.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    });
   }
 
-  // Reveal-on-scroll
+  // Reveal on scroll
   var reveals = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && reveals.length) {
     var io = new IntersectionObserver(function (entries) {
@@ -22,24 +39,10 @@
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    }, { threshold: 0.1, rootMargin: "0px 0px -60px 0px" });
     reveals.forEach(function (el) { io.observe(el); });
   } else {
     reveals.forEach(function (el) { el.classList.add("in"); });
-  }
-
-  // Contact form — front-end only stub (no backend in a static site)
-  var form = document.querySelector("[data-contact-form]");
-  if (form) {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var note = form.querySelector("[data-form-note]");
-      if (note) {
-        note.hidden = false;
-        note.textContent = "Thanks — your message has been noted. We'll be in touch shortly.";
-      }
-      form.reset();
-    });
   }
 
   // Footer year
