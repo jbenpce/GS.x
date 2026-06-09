@@ -289,7 +289,11 @@
           <div class="form-panel">
             <h3>Get in Touch</h3>
             <p class="intro">Tell us a little about you and we'll be in touch.</p>
-            <form data-contact-form novalidate>
+            <form data-contact-form action="https://formsubmit.co/info@greensparx.io" method="POST" novalidate>
+              <input type="hidden" name="_subject" value="New enquiry from greensparx.io" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
               <div class="form-grid">
                 <div class="field">
                   <label for="fname">First name</label>

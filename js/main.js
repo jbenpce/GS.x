@@ -45,34 +45,43 @@
     reveals.forEach(function (el) { el.classList.add("in"); });
   }
 
-  // Contact form — forwards to info@greensparx.io via the visitor's email client
-  // (static site, no backend). Swap for Formspree/Netlify Forms for inbox delivery.
+  // Contact form — submits in the background to FormSubmit.co (static-site form
+  // relay → emails info@greensparx.io). No mailto, no page reload.
   var form = document.querySelector("[data-contact-form]");
   if (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var val = function (id) { var el = form.querySelector("#" + id); return el ? el.value.trim() : ""; };
-      var fname = val("fname"), lname = val("lname"), org = val("org"),
-          role = val("role"), email = val("email"), message = val("message");
-      var name = (fname + " " + lname).trim();
-      var subject = "Website enquiry" + (name ? " — " + name : "");
-      var body =
-        "Name: " + name + "\n" +
-        "Organisation: " + org + "\n" +
-        "I am a: " + role + "\n" +
-        "Email: " + email + "\n\n" +
-        "Message:\n" + message + "\n";
-      window.location.href =
-        "mailto:info@greensparx.io?subject=" + encodeURIComponent(subject) +
-        "&body=" + encodeURIComponent(body);
+      var isIt = (document.documentElement.lang || "").toLowerCase().indexOf("it") === 0;
       var note = form.querySelector("[data-form-note]");
-      if (note) {
-        var isIt = (document.documentElement.lang || "").toLowerCase().indexOf("it") === 0;
-        note.hidden = false;
-        note.textContent = isIt
-          ? "Apertura dell'app email per scrivere a info@greensparx.io…"
-          : "Opening your email app to send to info@greensparx.io…";
-      }
+      var btn = form.querySelector('button[type="submit"]');
+      function say(msg) { if (note) { note.hidden = false; note.textContent = msg; } }
+      say(isIt ? "Invio in corso…" : "Sending…");
+      if (btn) btn.disabled = true;
+      fetch("https://formsubmit.co/ajax/info@greensparx.io", {
+        method: "POST",
+        headers: { "Accept": "application/json" },
+        body: new FormData(form)
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (j) {
+          var ok = j && (j.success === true || j.success === "true");
+          if (ok) {
+            say(isIt
+              ? "Grazie — messaggio inviato. Ti ricontatteremo a breve."
+              : "Thanks — your message has been sent. We'll be in touch shortly.");
+            form.reset();
+          } else {
+            say(isIt
+              ? "Si è verificato un problema. Riprova o scrivici a info@greensparx.io."
+              : "Something went wrong — please try again, or email info@greensparx.io.");
+          }
+        })
+        .catch(function () {
+          say(isIt
+            ? "Errore di rete. Scrivici a info@greensparx.io."
+            : "Network error — please email info@greensparx.io.");
+        })
+        .finally(function () { if (btn) btn.disabled = false; });
     });
   }
 
