@@ -1,10 +1,11 @@
 name: Deploy to GitHub Pages
 
 # Publishes the static site to GitHub Pages.
-# Runs on pushes to this branch, and can be triggered manually.
+# Runs on pushes to main (production) or the dev branch, and can be triggered manually.
 on:
   push:
     branches:
+      - main
       - claude/brave-wozniak-Y78fJ
   workflow_dispatch:
 
