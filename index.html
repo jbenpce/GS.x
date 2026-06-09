@@ -3,6 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+  /* Language: remember choice (localStorage) + auto-detect on first visit. */
+  (function(){
+    try{
+      var KEY='gsx-lang';
+      var cur=(document.documentElement.lang||'en').slice(0,2).toLowerCase();
+      var ls; try{ls=window.localStorage;}catch(_){ls=null;}
+      // Persist explicit flag clicks (delegated so it works before body parses)
+      document.addEventListener('click',function(e){
+        var t=e.target,a=t&&t.closest?t.closest('a.lang'):null;
+        if(a&&ls){var hl=(a.getAttribute('hreflang')||'').slice(0,2).toLowerCase();if(hl){try{ls.setItem(KEY,hl);}catch(_){}}}
+      });
+      var pref=null; if(ls){try{pref=ls.getItem(KEY);}catch(_){}}
+      var desired;
+      if(pref==='it'||pref==='en'){desired=pref;}
+      else if(sessionStorage.getItem('gsx-auto')){desired=cur;}
+      else{
+        var L=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||navigator.userLanguage||'en'];
+        desired=L.some(function(l){return (l||'').toLowerCase().indexOf('it')===0;})?'it':'en';
+        try{sessionStorage.setItem('gsx-auto','1');}catch(_){}
+      }
+      if(desired!==cur){
+        window.location.replace((desired==='it'?'index-it.html':'index.html')+window.location.hash);
+      }
+    }catch(e){}
+  })();
+  </script>
   <title>GS.x — Greenspar.x · European Energy Development</title>
   <meta name="description" content="Greenspar.x (GS.x) is a European development platform focused on battery energy storage and the infrastructure that enables the clean energy transition. Building the grid of tomorrow, today." />
   <meta property="og:title" content="GS.x — Building the grid of tomorrow, today." />
