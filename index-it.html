@@ -4,37 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="robots" content="noindex,follow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script>
-  /* Language: remember choice (localStorage) + auto-detect on first visit. */
-  (function(){
-    try{
-      var KEY='gsx-lang';
-      var cur=(document.documentElement.lang||'en').slice(0,2).toLowerCase();
-      var ls; try{ls=window.localStorage;}catch(_){ls=null;}
-      // Persist explicit flag clicks (delegated so it works before body parses)
-      document.addEventListener('click',function(e){
-        var t=e.target,a=t&&t.closest?t.closest('a.lang'):null;
-        if(a&&ls){var hl=(a.getAttribute('hreflang')||'').slice(0,2).toLowerCase();if(hl){try{ls.setItem(KEY,hl);}catch(_){}}}
-      });
-      var pref=null; if(ls){try{pref=ls.getItem(KEY);}catch(_){}}
-      var desired;
-      if(pref==='it'||pref==='en'){desired=pref;}
-      else if(sessionStorage.getItem('gsx-auto')){desired=cur;}
-      else{
-        var L=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||navigator.userLanguage||'en'];
-        desired=L.some(function(l){return (l||'').toLowerCase().indexOf('it')===0;})?'it':'en';
-        try{sessionStorage.setItem('gsx-auto','1');}catch(_){}
-      }
-      if(desired!==cur){
-        window.location.replace((desired==='it'?'index-it.html':'index.html')+window.location.hash);
-      }
-    }catch(e){}
-  })();
-  </script>
-  <title>GS.x — Greenspar.x · Sviluppo Energetico Europeo</title>
-  <meta name="description" content="Greenspar.x (GS.x) è una piattaforma europea di sviluppo focalizzata sull&#39;accumulo di energia a batteria e sulle infrastrutture che abilitano la transizione verso l&#39;energia pulita. Costruiamo la rete di domani, oggi." />
-  <meta property="og:title" content="GS.x — Costruiamo la rete di domani, oggi." />
-  <meta property="og:description" content="Piattaforma europea di sviluppo focalizzata sull&#39;accumulo di energia a batteria. Pipeline BESS proprietaria da 960 MW in Italia, con diritti di rete assicurati. Dall&#39;Italia, verso tutta Europa." />
+  <title>GS.x — Infrastruttura critica per l&#39;economia dell&#39;intelligenza</title>
+  <meta name="description" content="Greenspar.x (GS.x) sviluppa sistemi di accumulo a batteria su scala di rete in Italia — l&#39;infrastruttura critica che alimenta l&#39;economia dell&#39;intelligenza e una rete europea più pulita, intelligente e resiliente." />
+  <meta property="og:title" content="GS.x — La rete dietro l&#39;economia dell&#39;intelligenza." />
+  <meta property="og:description" content="L&#39;economia dell&#39;intelligenza funziona a elettricità. Greenspar.x sviluppa l&#39;accumulo a batteria su scala di rete che trasforma l&#39;energia pulita e abbondante in capacità ferma e sempre disponibile — infrastruttura critica per l&#39;era dell&#39;IA. Pipeline BESS proprietaria da 960 MW in Italia." />
   <meta property="og:type" content="website" />
   <link rel="alternate" hreflang="en" href="index.html" />
   <link rel="alternate" hreflang="it" href="index-it.html" />
@@ -75,9 +48,9 @@
     <section class="hero">
       <div class="hero-grid">
         <div class="hero-copy container-left">
-          <p class="eyebrow reveal in">Sviluppo Energetico Europeo</p>
-          <h1 class="h-hero reveal in">Costruiamo la rete<br>di <em>domani</em>,<br>oggi.</h1>
-          <p class="lede reveal in">Greenspar.x è una piattaforma europea di sviluppo focalizzata sull&#39;accumulo di energia a batteria e sulle infrastrutture che abilitano la transizione verso l&#39;energia pulita.</p>
+          <p class="eyebrow reveal in">Il nesso IA&ndash;energia</p>
+          <h1 class="h-hero reveal in">La rete dietro<br>l&#39;economia<br>dell&#39;<em>intelligenza</em>.</h1>
+          <p class="lede reveal in">Intelligenza artificiale, elettrificazione e rinnovabili stanno convergendo nella sfida infrastrutturale che definisce il nostro tempo. Greenspar.x sviluppa l&#39;accumulo a batteria su scala di rete che trasforma l&#39;energia pulita e abbondante in capacità ferma e sempre disponibile &mdash; l&#39;infrastruttura critica dell&#39;economia dell&#39;intelligenza.</p>
           <div class="hero-actions reveal in">
             <a href="#portfolio" class="btn btn--solid">Il nostro portfolio</a>
             <a href="#contact" class="btn btn--text">Parla con noi <span class="arrow">&rarr;</span></a>
@@ -88,21 +61,48 @@
           <div class="hero-photo"></div>
           <div class="hero-stats">
             <div class="hstat">
-              <div class="num figure">960<span class="u">MW</span></div>
+              <div class="num figure"><span class="count" data-to="960">960</span><span class="u">MW</span></div>
               <div class="cap">BESS proprietari</div>
             </div>
             <div class="hstat">
-              <div class="num figure">9</div>
+              <div class="num figure"><span class="count" data-to="9">9</span></div>
               <div class="cap">Progetti connessi alla rete</div>
             </div>
             <div class="hstat">
-              <div class="num figure">100<span class="u">%</span></div>
+              <div class="num figure"><span class="count" data-to="100">100</span><span class="u">%</span></div>
               <div class="cap">Diritti di rete assicurati</div>
             </div>
             <div class="hstat">
               <div class="num figure">IT</div>
               <div class="cap">Mercato attuale · Europa</div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Thesis: il nesso IA-energia -->
+    <section class="section section--alt" id="thesis">
+      <div class="container split split--top">
+        <div class="section-head reveal">
+          <p class="eyebrow">Perché l&#39;accumulo, perché ora</p>
+          <h2 class="h-section">L&#39;intelligenza funziona<br>a <em>elettricità</em>.</h2>
+          <p class="lede" style="margin-top:2rem">L&#39;economia dell&#39;intelligenza &mdash; IA, data center e industria elettrificata &mdash; si scontra con una rete costruita per un&#39;altra epoca. Le rinnovabili sono oggi l&#39;energia più economica mai realizzata, ma sono variabili.</p>
+          <p class="lede">L&#39;accumulo a batteria su scala di rete è lo strato mancante che trasforma l&#39;energia pulita e abbondante in capacità ferma, dispacciabile e sempre disponibile. Non è più un optional green, ma <em>infrastruttura critica per l&#39;economia dell&#39;intelligenza</em> &mdash; la base su cui poggia tutto ciò che è intelligente.</p>
+        </div>
+        <div class="steps reveal">
+          <div class="step">
+            <div class="idx">01</div>
+            <div><h3>Domanda in forte crescita</h3><p>IA, data center ed elettrificazione stanno guidando la crescita della domanda di energia più rapida da una generazione.</p></div>
+          </div>
+          <div class="step">
+            <div class="idx">02</div>
+            <div><h3>Offerta variabile</h3><p>Solare ed eolico sono l&#39;energia più economica mai costruita &mdash; ma non producono su richiesta.</p></div>
+          </div>
+          <div class="step">
+            <div class="idx">03</div>
+            <div><h3>Lo strato di firming</h3><p>Le batterie colmano il divario, fornendo energia pulita esattamente quando e dove serve alla rete.</p></div>
           </div>
         </div>
       </div>
@@ -375,7 +375,7 @@
       <div class="footer-top">
         <div class="footer-brand">
           <a class="brand" href="#top"><svg class="brand-icon" viewBox="-84 -84 168 168" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="cff" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6ee79a"/><stop offset="0.55" stop-color="#2bb673"/><stop offset="1" stop-color="#127a4d"/></linearGradient></defs><g transform="rotate(0.00)"><path d="M 56.38 20.52 A 60 60 0 0 1 -10.42 59.09" fill="none" stroke="#a8c3a1" stroke-width="7" stroke-linecap="round"/><path d="M -26.18 56.31 L -12.33 69.92 L -8.51 48.26 Z" fill="#a8c3a1"/></g><g transform="rotate(120.00)"><path d="M 56.38 20.52 A 60 60 0 0 1 -10.42 59.09" fill="none" stroke="#a8c3a1" stroke-width="7" stroke-linecap="round"/><path d="M -26.18 56.31 L -12.33 69.92 L -8.51 48.26 Z" fill="#a8c3a1"/></g><g transform="rotate(240.00)"><path d="M 56.38 20.52 A 60 60 0 0 1 -10.42 59.09" fill="none" stroke="#a8c3a1" stroke-width="7" stroke-linecap="round"/><path d="M -26.18 56.31 L -12.33 69.92 L -8.51 48.26 Z" fill="#a8c3a1"/></g><rect x="-35" y="-14" width="62" height="28" rx="5" fill="url(#cff)"/><rect x="-41" y="-20" width="82" height="40" rx="11" fill="none" stroke="#a8c3a1" stroke-width="5.5"/><rect x="45" y="-8" width="6" height="16" rx="3" fill="#a8c3a1"/><path transform="translate(-14.399999999999999,-14.399999999999999) scale(1.2)" fill="#0a0b09" d="M13.5 1 L3.5 13.5 H11 L9 23 L20.5 9.5 H13 Z"/></svg><span class="brand-wm">GS<span class="x">.x</span></span></a>
-          <p>Una piattaforma europea di sviluppo energetico. Costruiamo asset di accumulo a batteria che alimentano la transizione verso l&#39;energia pulita.</p>
+          <p>Infrastruttura critica per l&#39;economia dell&#39;intelligenza &mdash; accumulo a batteria su scala di rete per una rete europea più pulita, intelligente e resiliente.</p>
         </div>
         <div class="footer-col">
           <h4>Navigazione</h4>
