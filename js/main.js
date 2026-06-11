@@ -45,6 +45,31 @@
     reveals.forEach(function (el) { el.classList.add("in"); });
   }
 
+  // Count-up animation for hero stats (the "living grid" touch)
+  var counts = document.querySelectorAll(".count[data-to]");
+  if (counts.length) {
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce || !("IntersectionObserver" in window)) {
+      counts.forEach(function (el) { el.textContent = el.getAttribute("data-to"); });
+    } else {
+      var cio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          var el = en.target; cio.unobserve(el);
+          var to = parseInt(el.getAttribute("data-to"), 10) || 0, dur = 1500, t0 = null;
+          function tick(ts) {
+            if (!t0) t0 = ts;
+            var p = Math.min((ts - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+            el.textContent = Math.round(e * to).toString();
+            if (p < 1) requestAnimationFrame(tick); else el.textContent = to.toString();
+          }
+          requestAnimationFrame(tick);
+        });
+      }, { threshold: 0.4 });
+      counts.forEach(function (el) { cio.observe(el); });
+    }
+  }
+
   // Contact form — submits in the background to FormSubmit.co (static-site form
   // relay → emails info@greensparx.io). No mailto, no page reload.
   var form = document.querySelector("[data-contact-form]");
