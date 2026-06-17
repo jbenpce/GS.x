@@ -2,8 +2,31 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <meta name="robots" content="noindex,follow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+  /* Language: remember choice (localStorage) + auto-detect on first visit. */
+  (function(){
+    try{
+      var KEY='gsx-lang';
+      var cur=(document.documentElement.lang||'en').slice(0,2).toLowerCase();
+      var ls; try{ls=window.localStorage;}catch(_){ls=null;}
+      document.addEventListener('click',function(e){
+        var t=e.target,a=t&&t.closest?t.closest('a.lang'):null;
+        if(a&&ls){var hl=(a.getAttribute('hreflang')||'').slice(0,2).toLowerCase();if(hl){try{ls.setItem(KEY,hl);}catch(_){}}}
+      });
+      var pref=null; if(ls){try{pref=ls.getItem(KEY);}catch(_){}}
+      var desired;
+      if(pref==='it'||pref==='en'){desired=pref;}
+      else if(sessionStorage.getItem('gsx-auto')){desired=cur;}
+      else{
+        var L=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||navigator.userLanguage||'en'];
+        desired=L.some(function(l){return (l||'').toLowerCase().indexOf('it')===0;})?'it':'en';
+        try{sessionStorage.setItem('gsx-auto','1');}catch(_){}
+      }
+      if(desired!==cur){ window.location.replace((desired==='it'?'index-it.html':'index.html')+window.location.hash); }
+    }catch(e){}
+  })();
+  </script>
   <title>GS.x — Infrastruttura critica per l&#39;economia dell&#39;intelligenza</title>
   <meta name="description" content="Greenspar.x (GS.x) sviluppa sistemi di accumulo a batteria su scala di rete in Italia — l&#39;infrastruttura critica che alimenta l&#39;economia dell&#39;intelligenza e una rete europea più pulita, intelligente e resiliente." />
   <meta property="og:title" content="GS.x — La rete dietro l&#39;economia dell&#39;intelligenza." />
@@ -48,9 +71,9 @@
     <section class="hero">
       <div class="hero-grid">
         <div class="hero-copy container-left">
-          <p class="eyebrow reveal in">Il nesso IA&ndash;energia</p>
+          <p class="eyebrow reveal in">Connubio IA &ndash; Energia</p>
           <h1 class="h-hero reveal in">La rete dietro<br>l&#39;economia<br>dell&#39;<em>intelligenza</em>.</h1>
-          <p class="lede reveal in">Intelligenza artificiale, elettrificazione e rinnovabili stanno convergendo nella sfida infrastrutturale che definisce il nostro tempo. Greenspar.x sviluppa l&#39;accumulo a batteria su scala di rete che trasforma l&#39;energia pulita e abbondante in capacità ferma e sempre disponibile &mdash; l&#39;infrastruttura critica dell&#39;economia dell&#39;intelligenza.</p>
+          <p class="lede reveal in">Intelligenza artificiale, elettrificazione e rinnovabili convergono nella sfida infrastrutturale che definirà la nostra epoca. Greenspar.x sviluppa soluzioni di stoccaggio elettrochimico su scala industriale che convertono l&#39;abbondante ma intermittente energia pulita in una risorsa stabile, continua e accessibile.</p>
           <div class="hero-actions reveal in">
             <a href="#portfolio" class="btn btn--solid">Il nostro portfolio</a>
             <a href="#contact" class="btn btn--text">Parla con noi <span class="arrow">&rarr;</span></a>
@@ -89,7 +112,7 @@
           <p class="eyebrow">Perché l&#39;accumulo, perché ora</p>
           <h2 class="h-section">L&#39;intelligenza funziona<br>a <em>elettricità</em>.</h2>
           <p class="lede" style="margin-top:2rem">L&#39;economia dell&#39;intelligenza &mdash; IA, data center e industria elettrificata &mdash; si scontra con una rete costruita per un&#39;altra epoca. Le rinnovabili sono oggi l&#39;energia più economica mai realizzata, ma sono variabili.</p>
-          <p class="lede">L&#39;accumulo a batteria su scala di rete è lo strato mancante che trasforma l&#39;energia pulita e abbondante in capacità ferma, dispacciabile e sempre disponibile. Non è più un optional green, ma <em>infrastruttura critica per l&#39;economia dell&#39;intelligenza</em> &mdash; la base su cui poggia tutto ciò che è intelligente.</p>
+          <p class="lede">Lo stoccaggio su scala industriale è l&#39;anello mancante: converte l&#39;energia pulita &mdash; abbondante ma intermittente &mdash; in una risorsa stabile e sempre disponibile. Non più un optional green, ma <em>infrastruttura critica</em>: la base su cui poggia tutto ciò che è intelligente.</p>
         </div>
         <div class="steps reveal">
           <div class="step">
@@ -122,22 +145,22 @@
           <div class="step">
             <div class="idx">01</div>
             <div>
-              <h3>Origine dei progetti</h3>
-              <p>Identificazione proprietaria dei siti e diritti sui terreni. Ci muoviamo prima del mercato grazie a reti locali e screening tecnico.</p>
+              <h3>Origination</h3>
+              <p>Identificazione proprietaria e acquisizione dei diritti sui terreni. Anticipiamo il mercato grazie a reti locali consolidate e a un rigoroso screening tecnico.</p>
             </div>
           </div>
           <div class="step">
             <div class="idx">02</div>
             <div>
               <h3>Connessione alla rete &amp; Permessi</h3>
-              <p>Gestione completa di STMG, Autorizzazione Unica e procedure di rete, navigando il complesso quadro normativo italiano.</p>
+              <p>Gestione integrale del processo di connessione e degli iter autorizzativi, con piena padronanza del complesso quadro regolatorio italiano.</p>
             </div>
           </div>
           <div class="step">
             <div class="idx">03</div>
             <div>
               <h3>Strutturazione &amp; Capitale</h3>
-              <p>Partnership azionarie, strutture in JV e accordi di co-sviluppo concepiti per allineare gli incentivi lungo l&#39;intero ciclo di vita del progetto.</p>
+              <p>Partnership azionarie, joint venture e accordi di co-sviluppo strutturati per allineare gli incentivi lungo l&#39;intero ciclo di vita del progetto.</p>
             </div>
           </div>
           <div class="step">
@@ -157,7 +180,7 @@
         <div class="section-head reveal">
           <p class="eyebrow">Il portfolio</p>
           <h2 class="h-section">Italia — e<br><em>oltre</em>.</h2>
-          <p class="lede" style="margin-top:2rem">Una pipeline proprietaria di accumulo a batteria in tutta Italia, sviluppata internamente dal terreno e dalla rete fino al ready-to-build — con l&#39;ambizione di crescere in Europa.</p>
+          <p class="lede" style="margin-top:2rem">Una pipeline proprietaria di sistemi di accumulo a batteria sviluppata interamente in-house — dal sito alla rete, fino al ready-to-build — con l&#39;ambizione di espanderci in tutta Europa.</p>
         </div>
 
         <div class="reveal">
@@ -165,8 +188,8 @@
             <span class="tag">BESS · Proprietari</span>
             <div class="num figure">960<span class="u">MW</span></div>
             <h3>Portfolio BESS Italiano</h3>
-            <p>Nove progetti proprietari di accumulo a batteria in tutta Italia, tutti con STMG (diritti di connessione alla rete) ottenuti. Sviluppo attivo in più fasi.</p>
-            <span class="status">STMG ottenuto · Sviluppo attivo</span>
+            <p>Nove progetti proprietari di accumulo a batteria distribuiti su tutto il territorio italiano, tutti con STMG ottenuta. Sviluppo attivo in più fasi.</p>
+            <span class="status">STMG ottenuta · Sviluppo attivo</span>
           </article>
         </div>
       </div>
@@ -178,7 +201,7 @@
         <div class="section-head reveal">
           <p class="eyebrow">Il mercato</p>
           <h2 class="h-section">Il mercato dell&#39;accumulo<br>più <em>attraente</em> d&#39;Europa.</h2>
-          <p class="lede" style="margin-top:2rem">L&#39;Italia è al primo posto in Europa per attrattività degli investimenti nell&#39;accumulo a batteria (Aurora Energy Research, 2025), sostenuta da un obiettivo governativo di 15 GW al 2030 e dal meccanismo di tolling quindicennale MACSE — il mercato in cui stiamo costruendo la nostra pipeline proprietaria.</p>
+          <p class="lede" style="margin-top:2rem">L&#39;Italia si colloca al primo posto in Europa per attrattività degli investimenti nell&#39;accumulo a batteria (Aurora Energy Research, 2025), sostenuta da un obiettivo governativo di 15 GW al 2030 e dal meccanismo di tolling quindicennale MACSE — il mercato su cui stiamo costruendo la nostra pipeline proprietaria.</p>
         </div>
 
         <div class="invest-grid reveal" style="grid-template-columns:repeat(4,1fr);margin-top:clamp(2.5rem,6vw,4.5rem)">
@@ -212,10 +235,10 @@
         <div class="split team-intro">
           <div class="reveal">
             <p class="eyebrow">Il team</p>
-            <h2 class="h-section">Comprovati.<br><em>Esperti.</em><br>Allineati.</h2>
+            <h2 class="h-section">Solidi.<br><em>Esperti.</em><br>Allineati.</h2>
           </div>
           <div class="reveal" style="align-self:center">
-            <p class="lede measure">Il nostro team fondatore riunisce una profonda esperienza in sviluppo energetico, project finance, strutturazione legale e mercati dei capitali — unito dalla convinzione che la transizione energetica europea richieda capitale di sviluppo paziente e guidato da esperti.</p>
+            <p class="lede measure">Il nostro team fondatore riunisce competenze trasversali in sviluppo energetico, project finance, strutturazione legale e mercati dei capitali — accomunato dalla convinzione che la transizione energetica europea richieda capitale di sviluppo paziente e guidato dall&#39;esperienza.</p>
           </div>
         </div>
 
@@ -225,23 +248,23 @@
             <h3>John Bottomley <span class="cred-inline">CFA</span></h3>
             <div class="role">Direzione Esecutiva</div>
             <div class="sep"></div>
-            <p>Sviluppo del business, comitato investimenti e mercati in crescita. Ampia esperienza nel settore energetico e delle infrastrutture a livello internazionale.</p>
+            <p>Business development, comitato investimenti e mercati emergenti. Solida esperienza internazionale nel settore energetico e delle infrastrutture.</p>
             <a class="link-arrow" href="https://www.linkedin.com/in/johnbottomley/" target="_blank" rel="noopener">LinkedIn <span class="arrow">&rarr;</span></a>
           </article>
           <article class="member reveal">
             <div class="avatar" aria-hidden="true"><img class="avatar-img" src="assets/team/Gibb.png" alt="" onerror="this.remove()" />EG</div>
             <h3>Ewan Gibb</h3>
-            <div class="role">Finanza &amp; Strutturazione</div>
+            <div class="role">Finance &amp; Structuring</div>
             <div class="sep"></div>
-            <p>Strutturazione di operazioni e sviluppo del business. Specialista in project finance, mercati dei capitali ed esecuzione di transazioni energetiche.</p>
+            <p>Impostazione delle operazioni e sviluppo del business. Specialista in project finance, mercati dei capitali ed esecuzione di transazioni energetiche.</p>
             <a class="link-arrow" href="https://www.linkedin.com/in/ewan-gibb-37182913/" target="_blank" rel="noopener">LinkedIn <span class="arrow">&rarr;</span></a>
           </article>
           <article class="member reveal">
             <div class="avatar" aria-hidden="true"><img class="avatar-img" src="assets/team/Martinez.png" alt="" onerror="this.remove()" />CM</div>
             <h3>Carlos Martínez</h3>
-            <div class="role">Legale &amp; Compliance</div>
+            <div class="role">Legal &amp; Compliance</div>
             <div class="sep"></div>
-            <p>Legale, M&amp;A e conformità normativa. Esperienza in transazioni del settore energetico in molteplici giurisdizioni europee.</p>
+            <p>Consulenza legale, M&amp;A e conformità normativa. Esperto in transazioni energetiche in molteplici giurisdizioni europee.</p>
             <a class="link-arrow" href="https://www.linkedin.com/in/carlos-mart%C3%ADnez-sanz-a2237263/" target="_blank" rel="noopener">LinkedIn <span class="arrow">&rarr;</span></a>
           </article>
         </div>
@@ -260,22 +283,22 @@
           <div class="partner reveal">
             <div class="label">Partner di Sviluppo Locali</div>
             <h3>Proprietari Terrieri &amp; Sviluppatori Locali</h3>
-            <p>Lavoriamo a stretto contatto con proprietari terrieri e sviluppatori locali che apportano accesso ai siti, relazioni con le comunità e conoscenza del territorio. Il nostro modello di co-sviluppo crea valore condiviso fin dalle prime fasi del progetto.</p>
+            <p>Lavoriamo a stretto contatto con proprietari terrieri e sviluppatori locali che mettono a disposizione i siti, le relazioni con le comunità e la conoscenza del territorio. Il nostro modello di co-sviluppo crea valore condiviso fin dalle prime fasi del progetto.</p>
           </div>
           <div class="partner reveal">
             <div class="label">Consulenza Tecnica</div>
             <h3>Specialisti di Ingegneria &amp; Rete</h3>
-            <p>Collaboriamo con i principali studi di ingegneria elettrica e di rete per studi di connessione, due diligence tecnica e supporto ai permessi — garantendo progetti costruiti su solide basi tecniche.</p>
+            <p>Collaboriamo con i principali studi di ingegneria elettrica per studi di rete, due diligence tecniche e supporto all&#39;iter autorizzativo — garantendo progetti costruiti su solide basi.</p>
           </div>
           <div class="partner reveal">
             <div class="label">Partner Finanziari</div>
             <h3>Co-Investitori Istituzionali</h3>
-            <p>Partner azionari e co-investitori che condividono la nostra convinzione nell&#39;accumulo energetico europeo. Strutturiamo partnership per allineare gli interessi lungo l&#39;intero ciclo di sviluppo, fino alla costruzione e oltre.</p>
+            <p>Partner azionari e co-investitori che condividono la nostra visione sull&#39;accumulo energetico europeo. Costruiamo partnership che allineano gli interessi lungo tutto il ciclo di sviluppo, fino alla costruzione e oltre.</p>
           </div>
           <div class="partner reveal">
             <div class="label">Legale &amp; Normativo</div>
             <h3>Specialisti Italiani &amp; UE</h3>
-            <p>Consulenza legale e normativa specializzata per i permessi italiani, il diritto energetico dell&#39;UE e la strutturazione di transazioni transfrontaliere. Profonda conoscenza locale supportata da una rete internazionale.</p>
+            <p>Consulenza legale e normativa specializzata per il processo autorizzativo italiano, il diritto energetico dell&#39;UE e la strutturazione di transazioni transfrontaliere. Profonda conoscenza locale supportata da una rete internazionale.</p>
           </div>
         </div>
       </div>

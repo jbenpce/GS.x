@@ -3,6 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+  /* Language: remember choice (localStorage) + auto-detect on first visit. */
+  (function(){
+    try{
+      var KEY='gsx-lang';
+      var cur=(document.documentElement.lang||'en').slice(0,2).toLowerCase();
+      var ls; try{ls=window.localStorage;}catch(_){ls=null;}
+      document.addEventListener('click',function(e){
+        var t=e.target,a=t&&t.closest?t.closest('a.lang'):null;
+        if(a&&ls){var hl=(a.getAttribute('hreflang')||'').slice(0,2).toLowerCase();if(hl){try{ls.setItem(KEY,hl);}catch(_){}}}
+      });
+      var pref=null; if(ls){try{pref=ls.getItem(KEY);}catch(_){}}
+      var desired;
+      if(pref==='it'||pref==='en'){desired=pref;}
+      else if(sessionStorage.getItem('gsx-auto')){desired=cur;}
+      else{
+        var L=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||navigator.userLanguage||'en'];
+        desired=L.some(function(l){return (l||'').toLowerCase().indexOf('it')===0;})?'it':'en';
+        try{sessionStorage.setItem('gsx-auto','1');}catch(_){}
+      }
+      if(desired!==cur){ window.location.replace((desired==='it'?'index-it.html':'index.html')+window.location.hash); }
+    }catch(e){}
+  })();
+  </script>
   <title>GS.x — Critical Infrastructure for the Intelligence Economy</title>
   <meta name="description" content="Greenspar.x (GS.x) develops grid-scale battery energy storage in Italy — the critical infrastructure powering the intelligence economy and a cleaner, smarter, more resilient European grid." />
   <meta property="og:title" content="GS.x — The grid behind the intelligence economy." />
@@ -31,6 +55,7 @@
           <li><a href="#news">News</a></li>
           <li><a href="#contact" class="btn btn--outline" style="padding:.7rem 1.3rem">Get in touch</a></li>
         </ul>
+<div class="lang-switch" role="group" aria-label="Language / Lingua"><a class="lang active" href="index.html" hreflang="en" title="English" aria-current="true"><svg class="flag" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><clipPath id="ukc"><rect width="60" height="30" rx="3"/></clipPath><g clip-path="url(#ukc)"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="3"/><rect x="25" width="10" height="30" fill="#fff"/><rect y="10" width="60" height="10" fill="#fff"/><rect x="27" width="6" height="30" fill="#C8102E"/><rect y="12" width="60" height="6" fill="#C8102E"/></g></svg></a><a class="lang" href="index-it.html" hreflang="it" title="Italiano"><svg class="flag" viewBox="0 0 3 2" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><clipPath id="itc"><rect width="3" height="2" rx="0.18"/></clipPath><g clip-path="url(#itc)"><rect width="1" height="2" fill="#008C45"/><rect x="1" width="1" height="2" fill="#F4F5F0"/><rect x="2" width="1" height="2" fill="#CD212A"/></g></svg></a></div>
         <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
