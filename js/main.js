@@ -76,11 +76,17 @@
   if (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var isIt = (document.documentElement.lang || "").toLowerCase().indexOf("it") === 0;
+      var lang = (document.documentElement.lang || "en").slice(0, 2).toLowerCase();
+      var M = {
+        en: { s: "Sending…", ok: "Thanks — your message has been sent. We'll be in touch shortly.", err: "Something went wrong — please try again, or email info@greensparx.io.", net: "Network error — please email info@greensparx.io." },
+        it: { s: "Invio in corso…", ok: "Grazie — messaggio inviato. Ti ricontatteremo a breve.", err: "Si è verificato un problema. Riprova o scrivici a info@greensparx.io.", net: "Errore di rete. Scrivici a info@greensparx.io." },
+        es: { s: "Enviando…", ok: "Gracias — tu mensaje se ha enviado. Te responderemos en breve.", err: "Algo ha ido mal — inténtalo de nuevo o escríbenos a info@greensparx.io.", net: "Error de red — escríbenos a info@greensparx.io." }
+      };
+      var t = M[lang] || M.en;
       var note = form.querySelector("[data-form-note]");
       var btn = form.querySelector('button[type="submit"]');
       function say(msg) { if (note) { note.hidden = false; note.textContent = msg; } }
-      say(isIt ? "Invio in corso…" : "Sending…");
+      say(t.s);
       if (btn) btn.disabled = true;
       fetch("https://formsubmit.co/ajax/info@greensparx.io", {
         method: "POST",
@@ -90,22 +96,9 @@
         .then(function (r) { return r.json(); })
         .then(function (j) {
           var ok = j && (j.success === true || j.success === "true");
-          if (ok) {
-            say(isIt
-              ? "Grazie — messaggio inviato. Ti ricontatteremo a breve."
-              : "Thanks — your message has been sent. We'll be in touch shortly.");
-            form.reset();
-          } else {
-            say(isIt
-              ? "Si è verificato un problema. Riprova o scrivici a info@greensparx.io."
-              : "Something went wrong — please try again, or email info@greensparx.io.");
-          }
+          if (ok) { say(t.ok); form.reset(); } else { say(t.err); }
         })
-        .catch(function () {
-          say(isIt
-            ? "Errore di rete. Scrivici a info@greensparx.io."
-            : "Network error — please email info@greensparx.io.");
-        })
+        .catch(function () { say(t.net); })
         .finally(function () { if (btn) btn.disabled = false; });
     });
   }
